@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Mediator
 {
-    class NonBeatleConcreteHandler : Participant
+    public class NonBeatleConcreteHandler : Participant
     {
         public NonBeatleConcreteHandler(string name)
             : base(name)
         {
         }
+
         public override void Receive(string from, string message)
         {
             Console.Write("To a non-Beatle: ");

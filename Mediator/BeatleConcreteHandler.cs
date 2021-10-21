@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mediator
+﻿namespace Mediator
 {
-    class BeatleConcreteHandler : Participant
+    using System;
+
+    public class BeatleConcreteHandler : Participant
     {
         public BeatleConcreteHandler(string name)
             : base(name)
         {
         }
+
         public override void Receive(string from, string message)
         {
             Console.Write("To a Beatle: ");

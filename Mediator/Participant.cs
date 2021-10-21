@@ -1,42 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mediator
+﻿namespace Mediator
 {
+    using System;
+
     public class Participant
     {
-        ChatroomConcreteMediator chatroom;
-        string name;
-        
+        private ChatroomConcreteMediator chatroom;
+        private string name;
+
         public Participant(string name)
         {
             this.name = name;
         }
-       
+
         public string Name
         {
-            get { return name; }
+            get { return this.name; }
         }
-        
+
         public ChatroomConcreteMediator Chatroom
         {
-            set { chatroom = value; }
-            get { return chatroom; }
+            get { return this.chatroom; }
+            set { this.chatroom = value; }
         }
-        
+
         public void Send(string to, string message)
         {
-            chatroom.Send(name, to, message);
+            this.chatroom.Send(this.name, to, message);
         }
-        
+
         public virtual void Receive(
             string from, string message)
         {
-            Console.WriteLine("{0} to {1}: '{2}'",
+            Console.WriteLine(
+                "{0} to {1}: '{2}'",
                 from, Name, message);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Participant participant &&
+                   this.Name == participant.Name;
         }
     }
 }
